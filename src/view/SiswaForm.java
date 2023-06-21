@@ -18,7 +18,7 @@ public class SiswaForm extends javax.swing.JFrame {
         readData();
 
     }
-                       
+    // Inisialisasi komponen GUI                
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -156,29 +156,29 @@ public class SiswaForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    // Menambah action pada tombol kembali
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {                                           
         Menu menu = new Menu();
         menu.setVisible(true);
         this.dispose();
     }                                          
-
+    
+    // Menambah action pada tombol tambah
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
         String Absen = edtAbsen.getText();
         String nama = edtNama.getText();
-
+        // Melakukan validasi
         if (validInput(Absen, nama)) {
-            tambahSiswa(Long.parseLong(Absen), nama);
+            tambahSiswa((int) Long.parseLong(Absen), nama);
         } else {
             JOptionPane.showMessageDialog(this, "Input Tidak Valid");
         }
     }                                         
-
+    // Method untuk mengatur action pada tombol hapus
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
         hapusData();
     }                                                                              
-
+    // Method untuk mengatur action saat mengklik baris pada tabel siswa
     private void tableSiswaMouseClicked(java.awt.event.MouseEvent evt) {                                            
         int selectedRow = tableSiswa.getSelectedRow();
         if (selectedRow != -1) {
@@ -189,7 +189,7 @@ public class SiswaForm extends javax.swing.JFrame {
             edtNama.setText(nama);
         }
     }                                           
-
+    // Method untuk menghapus data siswa
     private void hapusData() {
         int selectedRow = tableSiswa.getSelectedRow();
         if (selectedRow == -1) {
@@ -207,6 +207,7 @@ public class SiswaForm extends javax.swing.JFrame {
         }
     }
 
+    // Method untuk menghapus data siswa dari tabel Siswa dalam database
     private boolean hapusSiswa(String Absen) {
         DatabaseHelper databaseHelper = new DatabaseHelper();
         String query = "DELETE FROM Siswa WHERE Absen = '" + Absen + "'";
@@ -222,7 +223,8 @@ public class SiswaForm extends javax.swing.JFrame {
 
         return false;
     }
-
+    
+    // Method untuk melakukan pengecekan input
     private boolean validInput(String Absen, String nama) {
         // Pengecekan Absen apakah merupakan angka
         if (!Absen.matches("\\d+")) {
@@ -239,13 +241,14 @@ public class SiswaForm extends javax.swing.JFrame {
         return true;
     }
 
+    // Method untuk menginisialisasi tabel siswa
     private void initTable() {
         tableModel = new DefaultTableModel();
         tableSiswa.setModel(tableModel);
         tableModel.addColumn("Absen");
         tableModel.addColumn("Nama Siswa");
     }
-
+    // Method untuk membaca data dari tabel Siswa dalam database dan menampilkan data tersebut ke dalam tabel pada antarmuka pengguna
     public void readData() {
         DatabaseHelper databaseHelper = new DatabaseHelper();
         tableModel.getDataVector().removeAllElements();
@@ -272,14 +275,14 @@ public class SiswaForm extends javax.swing.JFrame {
         }
     }
 
-    private boolean tambahSiswa(Long Absen, String nama) {
+    private boolean tambahSiswa(int Absen, String nama) { 
         // Cek apakah Absen sudah ada dalam tabel
         String queryCheck = "SELECT COUNT(*) FROM Siswa WHERE Absen = ?";
         String queryInsert = "INSERT INTO Siswa (Absen, nama) VALUES (?,?)";
         try {
             DatabaseHelper databaseHelper = new DatabaseHelper();
 
-            // Cek apakah Absen sudah ada
+            // Cek apakah Absen sudah ada?
             PreparedStatement checkStatement = databaseHelper.getConnection().prepareStatement(queryCheck);
             checkStatement.setLong(1, Absen);
             ResultSet resultSet = checkStatement.executeQuery();
@@ -293,7 +296,7 @@ public class SiswaForm extends javax.swing.JFrame {
                 return false;
             }
 
-            // Tambahkan data Siswa
+            // Menambahkan data Siswa
             PreparedStatement insertStatement = databaseHelper.getConnection().prepareStatement(queryInsert);
             insertStatement.setLong(1, Absen);
             insertStatement.setString(2, nama);
