@@ -29,7 +29,7 @@ public class AbsensiForm extends javax.swing.JFrame {
         initTable();
         readData();
     }
-    // Menginisialisasi model tabel dan menambahkan kolom-kolomnya
+    // Menginisialisasi model tabel dan menambahkan kolom kolomnya
     private void initTable() {
         tableModel = new DefaultTableModel();
         tableAbsensi.setModel(tableModel);
