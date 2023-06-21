@@ -1,13 +1,16 @@
 package model;
-public class Siswa {
+
+public class Siswa {   // Mendeklarasi kelas publik bernama "Siswa"
     private int Absen;
     private String nama;
 
+    // Konstruktor untuk menginisialisasi nilai dari variabel instance
     public Siswa(int Absen, String nama) {
         this.Absen = Absen;
         this.nama = nama;
     }
 
+    // Method getter setter untuk mengakses nilai atribut
     public int getAbsen() {
         return Absen;
     }
