@@ -16,32 +16,33 @@ public class Absensi extends matapelajaran {    //deklarasi kelas absensi yang m
         this.tanggal = tanggal;
     }
 
-    //untuk mendapatkan nilai 'idAbsensi' dari objek 'absensi'
+    //metode akses 'getIdAbsensi()' yang mengembalikan nilai 'idAbsensi'
     public int getIdAbsensi() {
         return idAbsensi;
     }
 
-    //untuk mendapatkan objek 'Siswa' terkait dengan absensi 
+    //metode akses 'getSiswa()' yang mengembalikan objek 'Siswa'
     public Siswa getSiswa() {
         return Siswa;
     }
 
-    //untuk mendapatkan informasi tentang absensi siswa
+    //metode akses 'getKeterangan()' yang mengembalikan nilai 'keterangan' untuk mendapatkan informasi atau catatan tentang absensi siswa
     public String getKeterangan() {
         return keterangan;
     }
 
-    //untuk mendapatkan tanggal absensi
+    //metode akses 'getTanggal()' yang mengembalikan nilai 'tanggal' untuk mendapatkan tanggal absensi
     public String getTanggal() {
         return tanggal;
     }
 
-    //untuk mendapatkan nama siswa
+    //memanggil metode 'getNama()' dari objek 'Siswa' untuk mengambil nama siswa, dan mengembalikan nilainya
     public String getNamaSiswa(){
         return Siswa.getNama();
     }
 
-    //untuk mendapatkan nama mata pelajaran
+    //menggunakan 'super' untuk mengakses metode 'getNamamatapelajaran' dari kelas induk.
+    //menggunakan 'super.getNamamatapelajaran', nilai nama mata pelajaran yang diinisiasi konstruktor 'matapelajaran' akan dikembalikan
     public String getNamamatapelajaran(){
         return super.getNamamatapelajaran();
     }
