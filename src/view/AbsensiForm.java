@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class AbsensiForm extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
-    // Inisialisasi form AbsensiForm
+    // Inisialisasi form pada AbsensiForm
     public AbsensiForm() {
         initComponents();
         cmbKeterangan.addItem("Hadir");
