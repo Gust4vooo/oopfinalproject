@@ -11,8 +11,9 @@ public class DatabaseHelper {
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "";
     
-    private Connection connection;
+    private Connection connection; // membuat koneksi
     
+    // membuat method untuk memasukkan koneksi database ke program
     public DatabaseHelper(){
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -21,6 +22,7 @@ public class DatabaseHelper {
         }
     }
     
+    // method untuk menyeleksi data
     public ResultSet executeQuery(String query){
         ResultSet resultSet = null;
         try {
@@ -31,7 +33,7 @@ public class DatabaseHelper {
         }
         return resultSet;
     }
-    
+    // method untuk memanipulasi data 
     public int executeUpdate(String query){
         int rowsAffected = 0;
         try{
@@ -43,9 +45,9 @@ public class DatabaseHelper {
         return rowsAffected;
     }
     
+    // Menutup koneksi ke database
     public void close() {
         try {
-            // Menutup koneksi ke database
             if (connection != null) {
                 connection.close();
             }
