@@ -14,7 +14,7 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
     }
-
+    // Membuat design dari halaman Login  
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -124,6 +124,7 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    // Memberikan action pada button untuk login ke database
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String username = edtUsername.getText();
         String password = new String(edtPassword.getPassword());
@@ -142,6 +143,7 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }                                        
 
+    // Method untuk memvalidasi parameter ke database
     private boolean validateUser(String username, String password) {
         String query = "SELECT * FROM user WHERE username = ? AND password = ?";
         try {
@@ -165,7 +167,10 @@ public class LoginForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 041548d2f49bbd2e54eafc1e4ec6633efec4ada7
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class AbsensiForm extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
-
+    // Inisialisasi form pada AbsensiForm
     public AbsensiForm() {
         initComponents();
         cmbKeterangan.addItem("Hadir");
@@ -29,7 +29,7 @@ public class AbsensiForm extends javax.swing.JFrame {
         initTable();
         readData();
     }
-
+    // Menginisialisasi model tabel dan menambahkan kolom kolomnya
     private void initTable() {
         tableModel = new DefaultTableModel();
         tableAbsensi.setModel(tableModel);
@@ -39,7 +39,7 @@ public class AbsensiForm extends javax.swing.JFrame {
         tableModel.addColumn("Keterangan");
         tableModel.addColumn("Tanggal");
     }
-
+    // Membaca data dari database dan menampilkan dalam tabel
     public void readData() {
         DatabaseHelper databaseHelper = new DatabaseHelper();
         tableModel.getDataVector().removeAllElements();
@@ -68,7 +68,7 @@ public class AbsensiForm extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }
-                        
+    // Inisialisasi komponen GUI 
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -331,7 +331,7 @@ public class AbsensiForm extends javax.swing.JFrame {
 
         return false;
     }
-
+    // Method untuk mengatur id absensi
     private int getLastInsertedID() {
         String query = "SELECT id_absensi FROM absensi ORDER BY id_absensi DESC LIMIT 1";
 
@@ -350,6 +350,7 @@ public class AbsensiForm extends javax.swing.JFrame {
         return 0;
     }
 
+    // Method untuk mengecek data
     private boolean validInput(int absen, String kode, String keterangan) {
         if (kode.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Kode mata pelajaran tidak boleh kosong!");
@@ -366,8 +367,9 @@ public class AbsensiForm extends javax.swing.JFrame {
 
         return true;
     }
+    // Method memberikan action kepada tombol hapus
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        // Mendapatkan baris yang dipilih dari tabel
         int selectedRow = tableAbsensi.getSelectedRow();
         if (selectedRow == -1) {
             return;
@@ -383,7 +385,7 @@ public class AbsensiForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Gagal menghapus data");
         }
     }                                        
-
+    // Fungsi untuk menghapus data absensi berdasarkan I
     private boolean hapusAbsensi(String id) {
         DatabaseHelper databaseHelper = new DatabaseHelper();
         String query = "DELETE FROM absensi WHERE id_absensi = '" + id + "'";
@@ -399,7 +401,7 @@ public class AbsensiForm extends javax.swing.JFrame {
 
         return false;
     }
-
+    // Memberikan action untuk kembali ke menu utama
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         Menu menu = new Menu();
@@ -408,7 +410,7 @@ public class AbsensiForm extends javax.swing.JFrame {
     }                                          
 
     private void tableAbsensiMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        // TODO add your handling code here:
+        // Mendapatkan baris yang dipilih dari tabel
         int selectedRow = tableAbsensi.getSelectedRow();
         if (selectedRow != -1) {
             String id = tableAbsensi.getValueAt(selectedRow, 0).toString();
