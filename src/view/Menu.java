@@ -1,30 +1,36 @@
-package view;
+package view; //untuk mengorganisir kelas yang berhubungan dengan tampilan GUI
 
+//kelas 'Menu' merupakan turunan dari kelas 'javax.swing.JFrame' dan akan menampilkan tampilan GUI
 public class Menu extends javax.swing.JFrame {
 
+    //konstruktor kelas 'Menu' akan memanggil metode 'initComponents()' untuk menginisialisasi komponen pada tampilan menu
     public Menu() {
         initComponents();
     }                        
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnSiswa = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel(); //panel kosong untuk menempatkan komponen GUI
+        jLabel1 = new javax.swing.JLabel(); //menampilkan teks atau gambar pada GUI
+        btnSiswa = new javax.swing.JButton(); //tombol yang dapat ditekan pada GUI
         btnAbsensi = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        //mengatur operasi yang akan dilakukan saat pengguna menutup jendela.
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        //mengatur warna background dari panel jPanel1 menjadi warna RGB dengan kode warna (133, 163, 137).
         jPanel1.setBackground(new java.awt.Color(133, 163, 137));
 
+        //mengatur teks (font, warna dan teks yang akan ditampilkan)
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("E-ABSEN");
 
         btnSiswa.setText("Siswa");
+        //menambahkan action listener pada tombol btnSiswa yang akan menangani aksi ketika tombol ditekan
         btnSiswa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiswaActionPerformed(evt);
@@ -32,6 +38,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnAbsensi.setText("Absensi");
+        //Menambahkan action listener pada tombol btnAbsensi yang akan menangani aksi ketika tombol ditekan.
         btnAbsensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbsensiActionPerformed(evt);
@@ -39,12 +46,14 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnLogout.setText("Exit");
+        //menambahkan action listener pada tombol btnLogout yang akan menangani aksi ketika tombol ditekan.
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
 
+        //membuat objek jPanel1Layout dari kelas javax.swing.GroupLayout yang akan digunakan untuk mengatur tata letak komponen di dalam jPanel1.
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -81,6 +90,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(133, 163, 137));
         jLabel4.setText("APLIKASI ABSENSI ONLINE");
 
+        //membuat objek jPanel2Layout dari kelas javax.swing.GroupLayout yang akan digunakan untuk mengatur tata letak komponen di dalam jPanel2.
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -102,6 +112,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(221, Short.MAX_VALUE))
         );
 
+        //membuat objek layout dari kelas javax.swing.GroupLayout yang akan digunakan untuk mengatur layout komponen di dalam ContentPane
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,28 +134,28 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }
 
+    //metode event handler yang akan dipanggil ketika tombol btnSiswa ditekan.
     private void btnSiswaActionPerformed(java.awt.event.ActionEvent evt) {                                             
         SiswaForm SiswaForm = new SiswaForm();
         SiswaForm.setVisible(true);
         this.dispose();
     }                                            
                                          
-
-    private void btnAbsensiActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    //metode event handler yang akan dipanggil ketika tombol btnAbsensi ditekan.
+    private void btnAbsensiActionPerformed(java.awt.event.ActionEvent evt) {                                   
         AbsensiForm absensiForm = new AbsensiForm();
         absensiForm.setVisible(true);
         this.dispose();
     }                                                                             
 
+    //metode event handler yang akan dipanggil ketika tombol btnLogout ditekan.
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
         LoginForm login = new LoginForm();
         login.setVisible(true);
         this.dispose();
     }     
 
-    // Variables declaration - do not modify                     
+    //deklarasi variabel yang merupakan objek tombol, objek label, dan objek panel.                     
     private javax.swing.JButton btnAbsensi;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSiswa;
@@ -153,5 +164,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    // End of variables declaration                   
+                      
 }
